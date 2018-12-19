@@ -11,7 +11,32 @@
             font-family: "Courier New", monospace;
             text-align: center;
         }
-
+        
+        #title{
+            background-color:magenta;
+            text-align: center;
+            color: white;
+            width: 100%;
+            height: 3em;
+        }
+        #action{
+            border: 1px solid magenta;
+            margin: 5%;
+            padding-bottom: 3em;
+            margin-top: 2em;
+        }
+        #draw-form{
+            background-color:gray;
+            width:100%;
+            height: 5em;
+            vertical-align: center;
+        }
+        
+        .center{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
         .invalid-field {
             border: 1px solid red;
         }
@@ -22,28 +47,39 @@
     </style>
 </head>
 <body>
-    <h1>Pyramid Slide</h1>
-
-    <p>When you say</p>
-    <p><strong>Draw a pyramid</strong></p>
-    <p>I say:</p>
+    <h1 id="title" class="center">Pyramid Slide</h1>
     <br>
-
-    <form id="draw-form">
-        <label>
-            How high?
-            <input type="text" id="height"/>
-            <label class="error-message">
-                <!-- If there was a user error, we will put a message in here -->
+    <div id="action">
+        <form id="draw-form" class="center">
+            
+            <label>
+                How high?
+                <input type="range" min="1" max="20" id="height" oninput="drawPyramid()"/>
+                <label class="error-message">
+                    <!-- If there was a user error, we will put a message in here -->
+                </label>
             </label>
-        </label>
+            &nbsp;
+            <span id="slide-in"></span>
+            &nbsp;&nbsp;&nbsp;
+            <label>
+                Brick Symbol: 
+                <select id="blocks" oninput="drawPyramid()">
+                    <option value="#">#</option>
+                    <option value="@">@</option>
+                    <option value="X">X</option>
+                    <option value="$">$</option>
+                </select>
+            </label>
+            
+            
+            <!--<input type="submit" value="Draw a pyramid"/>-->
+        </form>
+
         <br><br>
-        <input type="submit" value="Draw a pyramid"/>
-    </form>
 
-    <br><br>
-
-    <div id="pyramid"></div>
+        <div id="pyramid"></div>
+    </div>    
 
     <script src="pyramid-slide.js"></script>
 </body>

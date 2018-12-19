@@ -93,7 +93,8 @@ function drawPyramid(height) {
 
     // first, clear the old content
     document.getElementById("pyramid").innerHTML = "";
-
+    blocks = document.getElementById("blocks").value
+    height = document.getElementById("height").value
     // for each row....
     for (var row = 0; row < height; row++) {
 
@@ -108,9 +109,9 @@ function drawPyramid(height) {
             rowStr += spaceChar;
         }
         for (var i = 0; i < numBricks; i++) {
-            rowStr += "#";
+            rowStr += blocks;
         }
-
+        document.getElementById("slide-in").innerHTML = height;
         // make a <p> element for this row, and insert it into the #pyramid container
         rowElem = document.createElement("p");
         rowElem.innerHTML = rowStr;
